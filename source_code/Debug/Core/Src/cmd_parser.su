@@ -1,0 +1,3 @@
+cmd_parser.c:16:5:check_command_RST	4	static
+cmd_parser.c:35:5:check_command_OK	4	static
+cmd_parser.c:52:6:command_parser_fsm	8	static

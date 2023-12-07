@@ -25,6 +25,8 @@
 #include "software_timer.h"
 #include "buffer_receive.h"
 #include "stdio.h"
+#include "cmd_parser.h"
+#include "uart_com.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -124,6 +126,11 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  if( buffer_flag == 1){
+		  command_parser_fsm ();
+		  buffer_flag = 0;
+	  }
+	  uart_communiation_fsm ();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
