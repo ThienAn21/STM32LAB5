@@ -6,13 +6,17 @@
  */
 #include "uart_com.h"
 
+#define INIT 2
 #define waiting_RST_state 3
 #define waiting_OK_state 4
 
 
-int Uart_Com_State = waiting_RST_state;
+int Uart_Com_State = INIT;
 void uart_communiation_fsm (){
 	switch (Uart_Com_State) {
+	case INIT:
+		Uart_Com_State = waiting_RST_state;
+		break;
 	case waiting_RST_state:
 		/*
 		if(timer2_flag == 1){

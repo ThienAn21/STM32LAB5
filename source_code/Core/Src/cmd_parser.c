@@ -5,13 +5,14 @@
  *      Author: ASUS TUF GAMING
  */
 #include "cmd_parser.h"
+#define INIT 2
 #define waiting_RST_state 3
 #define waiting_OK_state 4
 
 
 int command_flag = OK;
 int command_data = OK;
-int command_parser_state = waiting_RST_state;
+int command_parser_state = INIT;
 int check_command_id;
 int check_command_RST(){
 	check_command_id = index_buffer;
@@ -51,6 +52,10 @@ int check_command_OK(){
 
 void command_parser_fsm (){
 	switch (command_parser_state) {
+	case INIT:
+		command_parser_state = waiting_RST_state;
+		command_flag = OK;
+		break;
 	case waiting_RST_state:
 		command_flag = OK;
 		if(check_command_RST()){
