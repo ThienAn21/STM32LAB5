@@ -69,7 +69,7 @@ static void MX_USART2_UART_Init(void);
 void HAL_UART_RxCpltCallback ( UART_HandleTypeDef * huart ){
 	if(huart -> Instance == USART2 ){
 		//HAL_UART_Transmit (& huart2 , &temp , 1, 50);
-		while(buffer_flag != 0 ){};
+		//while(buffer_flag != 0 ){};
 		buffer [ index_buffer ] = temp ;
 		index_buffer++;
 		if( index_buffer >= MAX_BUFFER_SIZE) index_buffer = 0;
@@ -79,9 +79,11 @@ void HAL_UART_RxCpltCallback ( UART_HandleTypeDef * huart ){
 }
 uint32_t ADC_value = 0;
 char str[20];
-void transmit_ADC_value(){
+void get_ADC_value(){
 	HAL_ADC_Start(&hadc1);
 	ADC_value = HAL_ADC_GetValue (& hadc1 );
+}
+void transmit_ADC_value(){
 	HAL_UART_Transmit (& huart2 , ( void *) str , sprintf (str , "!ADC=%ld#\n", ADC_value ), 50) ;
 }
 /* USER CODE END 0 */

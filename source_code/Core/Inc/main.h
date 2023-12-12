@@ -52,6 +52,7 @@ extern "C" {
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
+void get_ADC_value();
 void transmit_ADC_value();
 /* USER CODE BEGIN EFP */
 

@@ -23,6 +23,7 @@ void uart_communiation_fsm (){
 		if(command_flag == RST){
 			Uart_Com_State = waiting_OK_state;
 			setTimer1(10);
+			get_ADC_value();
 		}
 		break;
 	case waiting_OK_state:
